@@ -1,0 +1,19 @@
+[Unit]
+Description= Honeypot ADBHoney 
+After=network.target docker.service
+Requires=docker.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/docker compose -f /home/adb/ADBHoney/docker/docker-compose.yml up -d --remove-orphans
+ExecStop=/bin/docker compose -f /home/adb/ADBHoney/docker/docker-compose.yml down --remove-orphans
+ExecReload=/bin/docker compose -f /home/adb/ADBHoney/docker/docker-compose.yml restart
+WorkingDirectory=/home/adb/ADBHoney
+User=adb      
+Group=adb      
+TimeoutStartSec=120
+TimeoutStopSec=60
+Restart=on-failure
+RestartSec=15s
+[Install]
+WantedBy=multi-user.target

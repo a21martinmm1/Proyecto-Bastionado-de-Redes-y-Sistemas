@@ -1,0 +1,5 @@
+* * * * * cp -f /home/smtp/postgres/* /var/log/mailoney
+* * * * * cp -f /home/miniprint/miniprint.log /var/log/miniprint
+* * * * * cp -f /home/miniprint/uploads/* /var/log/miniprint/uploads
+* * * * * cp -f /home/adb/ADBHoney/docker/logs/* /var/log/adbhoney
+* * * * * cp -f /home/adb/ADBHoney/docker/dl/* /var/log/adbhoney/uploads

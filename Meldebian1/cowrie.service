@@ -1,0 +1,23 @@
+[Unit]
+Description=Honeypot Cowrie SSH
+After=network.target
+Wants=network.target
+[Service]
+Type=forking
+PIDFile=/home/cowrie/cowrie/var/run/cowrie.pid
+ExecStart=/home/cowrie/cowrie/bin/cowrie start
+ExecStop=/home/cowrie/cowrie/bin/cowrie stop
+ExecReload=/home/cowrie/cowrie/bin/cowrie reload
+
+
+WorkingDirectory=/home/cowrie/cowrie
+User=cowrie
+Group=cowrie
+Restart=on-failure
+RestartSec=10s
+Environment="VIRTUAL_ENV=/home/cowrie/cowrie/cowrie-env"
+Environment="PATH=/home/cowrie/cowrie/cowrie-env/bin:/usr/local/bin:/usr/bin:/bin"
+NoNewPrivileges=yes
+PrivateTmp=yes
+[Install]
+WantedBy=multi-user.target

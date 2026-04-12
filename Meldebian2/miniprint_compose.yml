@@ -1,0 +1,9 @@
+services:
+  miniprint:
+    build: .
+    ports:
+      - "9100:9100"
+    volumes:
+      - ./miniprint.log:/miniprint/miniprint.log
+      - ./uploads:/miniprint/uploads
+    restart: unless-stopped

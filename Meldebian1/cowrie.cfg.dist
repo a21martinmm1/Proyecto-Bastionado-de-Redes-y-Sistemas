@@ -1,0 +1,7 @@
+sensor_name = meldebian1
+hostname = meldebian1
+auth_class = AuthRandom
+auth_class_parameters = 10, 15, 10
+fake_addr = 172.16.0.100
+ssh_version = OpenSSH_9.2p1 Debian-2+deb12u7, OpenSSL 3.0.17 1 Jul 2025
+timezone = system

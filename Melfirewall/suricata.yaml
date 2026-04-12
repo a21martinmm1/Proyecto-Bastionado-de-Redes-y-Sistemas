@@ -1,0 +1,49 @@
+vars:
+  address-groups:
+	HOME_NET: "[172.16.0.0/24]"
+	EXTERNAL_NET: "!$HOME_NET"
+	HTTP_SERVERS: "172.16.0.100"
+	SMTP_SERVERS: "172.16.0.101"
+	HTTP_PORTS: "[80,8080]"
+	SSH_PORTS: "[22,2222]"
+	SMTP_PORTS: "[25,2525]"
+outputs:
+    	- smtp:
+	  extended: yes
+app-layer:
+	protocols
+    	  - smtp:
+	    enabled: yes
+	    detection-ports:
+		dp: 2525
+af-packet:
+  - interface: enp0s3  
+	cluster-id: 99
+	cluster-type: cluster_flow
+	defrag: yes
+  - interface: enp0s8  
+	cluster-id: 98
+	cluster-type: cluster_flow
+	defrag: yes
+default-rule-path: /etc/suricata/rules
+rule-files:
+  - suricata.rules  
+  - app-layer-events.rules
+  - decoder-events.rules
+  - dhcp-events.rules
+  - dnp3-events.rules
+  - dns-events.rules
+  - files.rules
+  - http2-events.rules
+  - http-events.rules
+  - ipsec-events.rules
+  - kerberos-events.rules
+  - modbus-events.rules
+  - mqtt-events.rules
+  - nfs-events.rules
+  - ntp-events.rules
+  - smb-events.rules
+  - smtp-events.rules
+  - ssh-events.rules
+  - stream-events.rules
+  - tls-events.rules

@@ -1,0 +1,9 @@
+[Unit]
+Description=Captura de tráfico en Honeywall (tshark en enp0s3 y enp0s8)
+After=network.target
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/tshark-honeywall.sh
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target

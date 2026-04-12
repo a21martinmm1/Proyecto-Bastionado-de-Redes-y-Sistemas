@@ -1,0 +1,2 @@
+* * * * * cp -f /home/wordpress/escenario/logs/access.log /var/log/wordpress/
+* * * * * cp -f /home/cowrie/cowrie/var/log/cowrie/* /var/log/cowrie/

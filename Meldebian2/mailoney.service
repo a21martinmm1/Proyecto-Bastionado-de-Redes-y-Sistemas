@@ -1,0 +1,20 @@
+[Unit]
+Description=Honeypot Mailoney
+After=network.target docker.service
+Requires=docker.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/bin/docker compose -f /home/smtp/compose.yml pull --quiet
+ExecStart=/bin/docker compose -f /home/smtp/compose.yml up -d --remove-orphans
+ExecStop=/bin/docker compose -f /home/smtp/compose.yml down --remove-orphans
+ExecReload=/bin/docker compose -f /home/smtp/compose.yml restart
+WorkingDirectory=/home/smtp
+User=smtp
+Group=smtp
+TimeoutStartSec=120
+TimeoutStopSec=60
+Restart=on-failure
+RestartSec=15s
+[Install]
+WantedBy=multi-user.target

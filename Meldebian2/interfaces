@@ -1,0 +1,9 @@
+source /etc/network/interfaces.d/*
+# The loopback network interface
+auto lo
+iface lo inet loopback
+# The primary network interface
+auto enp0s3
+iface enp0s3 inet static
+	address 172.16.0.100/24
+	gateway 172.16.0.1

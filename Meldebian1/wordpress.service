@@ -1,0 +1,20 @@
+[Unit]
+Description=Honeypot Wordpress
+After=network.target docker.service
+Requires=docker.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/bin/docker compose -f /home/wordpress/escenario/docker-compose.yml pull --quiet
+ExecStart=/bin/docker compose -f /home/wordpress/escenario/docker-compose.yml up -d --remove-orphans
+ExecStop=/bin/docker compose -f /home/wordpress/escenario/docker-compose.yml down --remove-orphans
+ExecReload=/bin/docker compose -f /home/wordpress/escenario/docker-compose.yml restart
+WorkingDirectory=/home/wordpress/escenario
+User=wordpress
+Group=wordpress
+TimeoutStartSec=120
+TimeoutStopSec=60
+Restart=on-failure
+RestartSec=15s
+[Install]
+WantedBy=multi-user.target
