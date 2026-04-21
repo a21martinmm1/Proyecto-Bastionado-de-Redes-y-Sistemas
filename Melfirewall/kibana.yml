@@ -1,3 +1,6 @@
 server.port: 5601
 server.host: "192.168.18.200"
 elasticsearch.hosts: ["http://localhost:9200"]
+xpack.security.encryptionKey: "${kibana_sec_enc_key}"
+xpack.reporting.encryptionKey: "${kibana_rep_enc_key}"
+xpack.encryptedSavedObjects.encryptionKey: "${kibana_obj_enc_key}"
