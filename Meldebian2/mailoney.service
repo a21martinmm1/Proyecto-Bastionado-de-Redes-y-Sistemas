@@ -5,7 +5,6 @@ Requires=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStartPre=/bin/docker compose -f /home/smtp/compose.yml pull --quiet
 ExecStart=/bin/docker compose -f /home/smtp/compose.yml up -d --remove-orphans
 ExecStop=/bin/docker compose -f /home/smtp/compose.yml down --remove-orphans
 ExecReload=/bin/docker compose -f /home/smtp/compose.yml restart
